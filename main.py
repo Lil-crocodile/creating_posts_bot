@@ -143,10 +143,12 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 # Запуск бота
-import os
 def main():
-    BOT_TOKEN = "7882247659:AAGzrdYeTyOF46BsBsaIWDtRpJnYUxDI_rk"
-    # BOT_TOKEN = os.getenv("BOT_TOKEN")  # ✅ загрузка токена из переменной среды
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    BOT_TOKEN = os.getenv("BOT_TOKEN")
     app = Application.builder().token(BOT_TOKEN).build()
 
     conv_handler = ConversationHandler(
